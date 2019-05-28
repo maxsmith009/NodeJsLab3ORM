@@ -1,0 +1,688 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Simple API",
+    "description": "Node js lab"
+  },
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/employees": {
+      "get": {
+        "tags": [
+          "employees"
+        ],
+        "summary": "Gets employees",
+        "description": "Returns a list containing all employees.",
+        "responses": {
+          "200": {
+            "description": "A list of Person",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "vacationDaysLeft": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "employees"
+        ],
+        "summary": "Create employee",
+        "description": "Deletes employee",
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "vacationDaysLeft": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/employees/{id}": {
+      "get": {
+        "tags": [
+          "employees"
+        ],
+        "summary": "Get employee by id",
+        "description": "Returns employee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee object",
+            "schema": {
+              "type": "objest",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "vacationDaysLeft": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Employee does not exist"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "employees"
+        ],
+        "summary": "Deletes employee",
+        "description": "Deletes employee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Person",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "vacationDaysLeft": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Employee does not exist"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "employees"
+        ],
+        "summary": "Update employee",
+        "description": "Deletes employee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "vacationDaysLeft": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of Person",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "vacationDaysLeft": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Employee does not exist"
+          }
+        }
+      }
+    },
+    "/employees/{id}/new-vacation-request": {
+      "post": {
+        "tags": [
+          "employees"
+        ],
+        "summary": "Create new vacation request",
+        "description": "Create new vacation request",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "startDate": {
+                  "type": "number"
+                },
+                "numberOfDays": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vacation object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "employeeId": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "type": "number"
+                },
+                "endDate": {
+                  "type": "number"
+                },
+                "numberOfDays": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "No employee"
+          }
+        }
+      }
+    },
+    "/employees/{id}/vacations": {
+      "get": {
+        "tags": [
+          "employees"
+        ],
+        "summary": "Get vacations of employee",
+        "description": "Get vacations of employee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vacation object",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "employeeId": {
+                    "type": "string"
+                  },
+                  "startDate": {
+                    "type": "number"
+                  },
+                  "endDate": {
+                    "type": "number"
+                  },
+                  "numberOfDays": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such employee"
+          }
+        }
+      }
+    },
+    "/vacations": {
+      "get": {
+        "tags": [
+          "vacations"
+        ],
+        "summary": "Gets vacations",
+        "description": "Returns a list containing all vacations.",
+        "responses": {
+          "200": {
+            "description": "A list of Vacations",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "employeeId": {
+                    "type": "string"
+                  },
+                  "startDate": {
+                    "type": "number"
+                  },
+                  "endDate": {
+                    "type": "number"
+                  },
+                  "numberOfDays": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "vacations"
+        ],
+        "summary": "Create vacation",
+        "description": "Deletes vacation",
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "employeeId": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "type": "number"
+                },
+                "numberOfDays": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "vacation object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "employeeId": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "type": "number"
+                },
+                "endDate": {
+                  "type": "number"
+                },
+                "numberOfDays": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/vacations/{id}": {
+      "get": {
+        "tags": [
+          "vacations"
+        ],
+        "summary": "Get vacation by id",
+        "description": "Returns vacation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "vacation object",
+            "schema": {
+              "type": "objest",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "employeeId": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "type": "number"
+                },
+                "endDate": {
+                  "type": "number"
+                },
+                "numberOfDays": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "vacation does not exist"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "vacations"
+        ],
+        "summary": "Deletes vacation",
+        "description": "Deletes vacation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of vacation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "employeeId": {
+                    "type": "string"
+                  },
+                  "startDate": {
+                    "type": "number"
+                  },
+                  "endDate": {
+                    "type": "number"
+                  },
+                  "numberOfDays": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "vacation does not exist"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "vacations"
+        ],
+        "summary": "Update vacation",
+        "description": "Deletes vacation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "employeeId": {
+                  "type": "string"
+                },
+                "startDate": {
+                  "type": "number"
+                },
+                "endDate": {
+                  "type": "number"
+                },
+                "numberOfDays": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of vacation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "employeeId": {
+                    "type": "string"
+                  },
+                  "startDate": {
+                    "type": "number"
+                  },
+                  "endDate": {
+                    "type": "number"
+                  },
+                  "numberOfDays": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "vacation does not exist"
+          }
+        }
+      }
+    },
+    "/vacations/vacations-on-date": {
+      "get": {
+        "tags": [
+          "vacations-on-date"
+        ],
+        "summary": "Get vacation on date",
+        "description": "Returns vacation",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "vacation object",
+            "schema": {
+              "type": "array",
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "employeeId": {
+                    "type": "string"
+                  },
+                  "startDate": {
+                    "type": "number"
+                  },
+                  "endDate": {
+                    "type": "number"
+                  },
+                  "numberOfDays": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/health-check": {
+      "get": {
+        "summary": "Get state of server",
+        "description": "Get state of server",
+        "responses": {
+          "200": {
+            "description": "State object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "startDate": {
+                  "type": "number"
+                },
+                "upTime": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
