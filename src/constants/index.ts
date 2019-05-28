@@ -14,4 +14,4 @@ export const credentialsLocatHost = {
     password: '1'
 };
 
-export const credentials = credentialsLocatHost;
+export const credentials = credentialsHeroku;
