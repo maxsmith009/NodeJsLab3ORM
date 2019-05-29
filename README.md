@@ -14,7 +14,9 @@ Step 2. Install dependencies
 npm install
 ```
 
-Step 3. Run server
+Step 3. Specify credentials for your posgres db in constants folder
+
+Step 4. Run server
 ```
 npm start
 ```
